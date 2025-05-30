@@ -2,8 +2,9 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { createSupabaseClient } from "@/lib/supabase";
+import { id } from "zod/v4/locales";
 
-export const createCompanion= async (formData: CreateCompanion) => {
+export const createCompanion = async (formData: CreateCompanion) => {
     const { userId: author } = await auth();
     const supabase = createSupabaseClient();
 
@@ -39,4 +40,18 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic}: 
     if (error) throw new Error(error.message);
 
     return companions;
+}
+
+export const getCompanion = async (id: string) => {
+    const supabase = createSupabaseClient();
+
+    const { data, error } = await supabase
+        .from('companions')
+        .select()
+        .eq('id', id)
+        .single();
+
+    if (error) throw new Error(error.message);
+
+    return data;
 }

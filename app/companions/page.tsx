@@ -10,8 +10,6 @@ const Companions = async ({ searchParams }: SearchParams) => {
   const topic = filters.topic ? String(filters.topic) : '';
 
   const companions = await getAllCompanions({ subject, topic });
-
-  console.log('Companions:', companions);
   
 
   return (
