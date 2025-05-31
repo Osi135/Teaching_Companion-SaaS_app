@@ -7,13 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { recentSessions } from '@/constants'
 import { cn, getSubjectColor } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
 
+interface CompanionsListProps {
+  companions?: Companion[]
+}
 
-const CompanionsList = () => {
+const CompanionsList = ({companions}: CompanionsListProps) => {
   return (
     <article className="companion-list w-2/3 max-lg:w-full">
       <h2 className="font-bold text-3xl">Recent Sessions</h2>
@@ -26,8 +28,8 @@ const CompanionsList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          { recentSessions?.map(({ id, subject, name, topic, duration}) => (
-            <TableRow key={id} >
+          { companions?.map(({ id, subject, name, topic, duration}) => (
+            <TableRow key={id}>
                 <TableCell>
                   <Link href={`/companions/${id}`} className="w-full">
                     <div className="flex items-center gap-2">
@@ -36,7 +38,7 @@ const CompanionsList = () => {
                       </div>
                       <div className="flex flex-col gap-2">
                         <p className="font-bold text-2xl">{name}</p>
-                        <p className="text-lg">{topic}</p>
+                        <p className="text-lg whitespace-normal">{topic}</p>  {/* This paragraph, needs to wrap to the next line when it starts making a scrollbar (but I dont know what elements gets that scrollbar)*/}
                       </div>
                     </div>
                   </Link>

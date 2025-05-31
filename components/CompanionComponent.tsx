@@ -9,6 +9,7 @@ import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import soundwaves from "@/constants/soundwaves.json";
 import { set } from "zod/v4";
 import { on } from "events";
+import { addToSessionHistory } from "@/lib/actions/companion.actions";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -51,6 +52,7 @@ const CompanionComponent = ({
 
     const onCallEnd = () => {
       setCallStatus(CallStatus.FINISHED);
+      addToSessionHistory(companionId)
     };
 
     const onMessage = (message: Message) => {
