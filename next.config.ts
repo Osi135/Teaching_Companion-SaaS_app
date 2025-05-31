@@ -4,6 +4,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   // devIndicators: false
+  typescript: {
+    // ignoreBuildErrors: true, // This is not recommended for production, but useful for development
+  },
+  eslint: {
+    // ignoreDuringBuilds: true, // This is not recommended for production, but useful for development
+  },
   images: {
     remotePatterns: [
       { hostname: 'img.clerk.com' },
