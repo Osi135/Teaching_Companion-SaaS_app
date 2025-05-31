@@ -152,12 +152,12 @@ const CompanionForm = () => {
                   value={field.value}
                   defaultValue={field.value}
                 >
-                  <SelectTrigger className="input">
+                  <SelectTrigger className="input capitalize">
                     <SelectValue placeholder="Select a voice type" />
                   </SelectTrigger>
                   <SelectContent>
-                    {["Male", "Female"].map((voice) => (
-                      <SelectItem key={voice} value={voice}>
+                    {["male", "female"].map((voice) => (
+                      <SelectItem key={voice} value={voice} className="capitalize">
                         {voice}
                       </SelectItem>
                     ))}
@@ -178,12 +178,12 @@ const CompanionForm = () => {
                   value={field.value}
                   defaultValue={field.value}
                 >
-                  <SelectTrigger className="input">
+                  <SelectTrigger className="input capitalize" >
                     <SelectValue placeholder="Select the style" />
                   </SelectTrigger>
                   <SelectContent>
-                    {["Formal", "Casual"].map((voice) => (
-                      <SelectItem key={voice} value={voice}>
+                    {["formal", "casual"].map((voice) => (
+                      <SelectItem key={voice} value={voice} className="capitalize">
                         {voice}
                       </SelectItem>
                     ))}
