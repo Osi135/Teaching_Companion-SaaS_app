@@ -13,12 +13,13 @@ import Image from "next/image"
 
 interface CompanionsListProps {
   companions?: Companion[]
+  title?: string;
 }
 
-const CompanionsList = ({companions}: CompanionsListProps) => {
+const CompanionsList = ({ title, companions }: CompanionsListProps) => {
   return (
     <article className="companion-list w-2/3 max-lg:w-full">
-      <h2 className="font-bold text-3xl">Recent Sessions</h2>
+      <h2 className="font-bold text-3xl">{title}</h2>
       <Table>
         <TableHeader>
           <TableRow>

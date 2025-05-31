@@ -83,15 +83,32 @@ export const getRecentSessions = async (limit = 10) => {
 
 }
 
-export const getUsertSessions = async (user_id: string, limit = 10) => {
+export const getUserSessions = async (userId: string, limit = 10) => {
+    const supabase = createSupabaseClient();
+    const { data, error } = await supabase
+        .from('session_history')
+        .select(`companions:companion_id (*)`)
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(limit)
+
+    if(error) throw new Error(error.message);
+
+    // Theese return what I expect
+    console.log("User Sessions Data: ", data);
+    console.log("USer Session Output: ", data.map(({ companions }) => companions));
+    
+
+    return data.map(({ companions }) => companions);
+}
+
+export const getUserCompanions = async (user_id: string) => {
     const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
-        .from('session_history')
-        .select('companions:companion_id (*)')
-        .eq('user_id', user_id)
-        .order('created_at', { ascending: false })
-        .limit(limit);
+        .from('companions')
+        .select()
+        .eq('author', user_id)
 
     if (error) throw new Error(error.message);
 

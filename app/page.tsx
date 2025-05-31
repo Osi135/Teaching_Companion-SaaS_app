@@ -20,6 +20,7 @@ const Page = async () => {
       </section>
       <section className="home-section">
         <CompanionsList 
+          title="Recent Sessions"
           companions={reccentSessionsCompanions}
         />
         <CTA />
