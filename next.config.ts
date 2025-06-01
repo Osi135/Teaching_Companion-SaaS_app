@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   eslint: {
     // ignoreDuringBuilds: true, // This is not recommended for production, but useful for development
   },
+  turbopack: {
+  
+  },
   images: {
     remotePatterns: [
       { hostname: 'img.clerk.com' },
